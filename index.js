@@ -1,7 +1,7 @@
-$("#js-shopping-list-form").submit(function(event){
-    const addedItem = $('#shopping-list-entry').val();
-    
-    $('.shopping-list').append(`<li>
+$("#js-shopping-list-form").submit(function (event) {
+  const addedItem = $('#shopping-list-entry').val();
+
+  $('.shopping-list').append(`<li>
     <span class="shopping-item">${addedItem}</span>
     <div class="shopping-item-controls">
       <button class="shopping-item-toggle">
@@ -12,22 +12,21 @@ $("#js-shopping-list-form").submit(function(event){
       </button>
     </div>
   </li>`);
-    event.preventDefault();
-    $('#shopping-list-entry').val('');
-    
-    deleteItems();
+  event.preventDefault();
+  $('#shopping-list-entry').val('');
+
+
 });
- function deleteItems() {
-    $('.shopping-item-delete').on('click', function() {
-        var deleteItem = $(this).closest('li').detach();
 
-    });
-};
-deleteItems();
+$('body').on('click', '.shopping-item-delete', function () {
+  var deleteItem = $(this).closest('li').detach();
 
-$('.shopping-item-toggle').on('click', function() {
-    const checkedItem = $('.shopping-item');
-    $(checkedItem).toggleClass(function () {
-        
-    });
+});
+
+
+
+$('body').on('click', '.shopping-item-toggle', function () {
+  var toggleItem = $(this).parent().siblings()[0];
+  $(toggleItem).toggleClass('shopping-item__checked');
+
 });
